@@ -35,7 +35,7 @@ As developers, our disk space quietly vanishes over time. Hundreds of abandoned 
 ### Global Installation (Recommended)
 
 ```bash
-npm install -g @exclnt/devclean
+npm install -g @ekoramdani/devclean
 ```
 
 ### Launch Interactive TUI
