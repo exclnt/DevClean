@@ -6,7 +6,7 @@ export interface HeaderProps {
   version?: string;
 }
 
-export const Header: React.FC<HeaderProps> = ({ title = 'DevClean', version = 'v0.1.0' }) => {
+export const Header: React.FC<HeaderProps> = ({ title = 'DevClean', version = 'v0.1.5' }) => {
   return (
     <Box justifyContent="space-between" width={76} paddingX={1} marginY={0}>
       <Box>
