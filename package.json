@@ -12,11 +12,22 @@
   },
   "scripts": {
     "build": "tsc",
+    "build:bundle": "esbuild src/cli/index.ts --bundle --platform=node --format=esm --alias:react-devtools-core=events \"--banner:js=import { createRequire } from 'module'; const require = createRequire(import.meta.url);\" --outfile=dist/bundle.mjs",
+    "build:bin": "npm run build && npm run build:bundle && pkg dist/bundle.mjs -t node26.5.1-win-x64,node26.5.1-linux-x64,node26.5.1-macos-x64 --out-path binaries",
     "dev": "tsc --watch",
     "start": "node dist/cli/index.js",
     "test": "vitest run",
     "test:watch": "vitest",
     "lint": "eslint ."
+  },
+  "pkg": {
+    "scripts": "dist/**/*.js",
+    "targets": [
+      "node20-win-x64",
+      "node20-linux-x64",
+      "node20-macos-x64"
+    ],
+    "outputPath": "binaries"
   },
   "dependencies": {
     "chalk": "^5.3.0",
@@ -32,6 +43,7 @@
     "@types/react": "^18.3.3",
     "@typescript-eslint/eslint-plugin": "^7.15.0",
     "@typescript-eslint/parser": "^7.15.0",
+    "@yao-pkg/pkg": "^6.22.0",
     "eslint": "^8.57.0",
     "typescript": "^5.5.2",
     "vitest": "^1.6.0"
